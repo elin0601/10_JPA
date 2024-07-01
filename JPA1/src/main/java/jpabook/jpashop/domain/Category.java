@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -41,11 +42,17 @@ public class Category {
 	
 	// 같은 엔티티 내부에서 연관 관계를 맺음 (양방향 관계)
 	// 이름만 같지 다른 엔티티와 연관 관계라고 생각하면 됨
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "parent_id")
 	private Category parent;
 	
 	@OneToMany(mappedBy = "parent")
 	private List<Category> child = new ArrayList<>();	
+	
+	// ==== 연관관계 편의 메서드 ====
+	public void addChildCategory(Category child) {
+		this.child.add(child);
+		child.setParent(this);
+	}
 	
 }
