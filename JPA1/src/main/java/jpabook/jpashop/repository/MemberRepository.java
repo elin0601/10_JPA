@@ -5,19 +5,20 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
 
 @Repository //spring bean 등록
+@RequiredArgsConstructor
 public class MemberRepository {
 	
-	@PersistenceContext // spring이 생성한 EntityManager를 주입해 주는 어노테이션
-	private EntityManager em; // spring이 엔티티 메니지를 만들어서 주입해줌
+	// @PersistenceContext : spring이 생성한 EntityManager를 주입해 주는 어노테이션
+	private final EntityManager em; // spring이 엔티티 메니지를 만들어서 주입해줌
 	
 	public void save(Member member) {
 		em.persist(member);
 	}
-	
+
 	public Member findOne(Long id) {
 		return em.find(Member.class, id);
 	}
