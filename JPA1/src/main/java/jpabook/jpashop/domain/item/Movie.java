@@ -1,3 +1,4 @@
+
 package jpabook.jpashop.domain.item;
 
 import jakarta.persistence.DiscriminatorValue;
