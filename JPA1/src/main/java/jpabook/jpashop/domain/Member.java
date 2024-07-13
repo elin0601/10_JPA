@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,8 @@ public class Member {
 	@GeneratedValue // 시퀀스 값 사용
 	@Column(name = "member_id") // PK 컬럼 지정
 	private Long id;
+	
+	@NotEmpty
 	private String name;
 	
 	@Embedded // 인베디드 내장 타입을 포함 했다는걸 알려주는 어노테이션
