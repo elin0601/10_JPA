@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.EntityManager;
 import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.domain.OrderStatus;
+import jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryDto;
 import lombok.RequiredArgsConstructor;
 
 @Repository
@@ -41,4 +41,7 @@ public class OrderRepository {
 				 				" join fetch o.delivery d", Order.class)
 				.getResultList();
 	}
+
+	
+	
 }
